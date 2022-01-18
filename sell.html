@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="sell.css">
+    <title>Calculator for NEPSE</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <h1 class="logo">Share Calculator</h1>
+        <!-- <img src="logosujan.png" alt="LogoSujan" class="logo"> -->
+        <!-- <nav class="nav_links">
+            <a href="index.html">Home</a>
+            <a href="buy.html">Buy</a>
+            <a href="#">Services</a>
+        </nav> -->
+        <a href="index.html" class="cta"><Button>Buy</Button></a>
+    </header>
+
+    <div class="bodyContainer">
+        <div class="container">
+            <div class="innercontainer">
+                <div class="sellshare">
+                    <div class="valueContainer">
+                        <label for="shareQuantity" class="label">Share Quantity</label>
+                        <input id="shareQuantity" class="input" type="number" name="shareQuantity" placeholder="12345">
+                    </div>
+                    <div class="valueContainer">
+                        <label for="purchasePrice" class="label">Purchased Price</label>
+                        <input id="purchasePrice" class="input" type="number" name="purchasePrice" placeholder="12345">
+                    </div>
+                    <div class="valueContainer">
+                        <label for="sellPrice" class="label">Selling Price</label>
+                        <input id="sellPrice" class="input" type="number" name="sellPrice" placeholder="12345">
+                    </div>
+
+                    <div class="valueContainer">
+                        <label for="investor" class="label">Investor Type</label>
+                        <select id="investor" class="form-control" name="investor">
+                            <option value="5">Individual More Than 1 year</option>
+                            <option value="7.5">Individual Less Than 1 year</option>
+                            <option value="10">Institutional</option>
+                        </select>
+                    </div>
+                    <div class="errorContainer" id="error"></div>
+                </div>
+                <div class="buttonsContainer">
+                    <input id="calculateSell" class="input button1" type="button" value="Calculate">
+                    <input id="clearSell" type="button" value="Clear" class="input button2">
+                </div>
+            </div>
+        </div>
+        <div class="resultsContainer">
+            <div class="innercontainer">
+                <table class="results" id="table">
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="sell.js"></script>
+
+</body>
+
+</html>
