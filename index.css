@@ -210,4 +210,14 @@ tr:nth-child(odd) {
 .button1 {
     width: 140px;
 }
+    #error {
+    text-align: center;
+    color: red;
+    font-family: 'Rubik';
+    padding-left: 15px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+
 }
