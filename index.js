@@ -29,7 +29,6 @@ calculate.addEventListener("click", function() {
         if (shareAmount <= 50000) {
             brokerCommissionRate = '0.40%';
             brokerCommission = (0.4 / 100) * shareAmount;
-            console.log(brokerCommission);
             if(brokerCommission <= 10){
                 brokerCommission = 10;
             }
