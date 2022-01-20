@@ -251,6 +251,7 @@ option {
     }
     .valueContainer {
         flex-direction: row;
+        flex-wrap: nowrap;
     }
     .label {
         color: #ffffff;
