@@ -5,6 +5,7 @@ let clearSell = document.getElementById('clearSell');
 let calculateSell = document.getElementById('calculateSell');
 let tax = document.getElementById('investor');
 let table2 = document.getElementById('table');
+document.getElementById('shareType').value = 0;
 
 
 
@@ -59,7 +60,7 @@ calculateSell.addEventListener("click", function() {
         if (totalAmount <= 50000) {
             brokerCommissionRate = '0.40%';
             brokerCommission = (0.4 / 100) * totalAmount;
-            if(brokerCommission <= 10){
+            if (brokerCommission <= 10) {
                 brokerCommission = 10;
             }
         } else if (totalAmount > 50000 && totalAmount <= 500000) {
@@ -75,7 +76,12 @@ calculateSell.addEventListener("click", function() {
             brokerCommissionRate = '0.27%';
             brokerCommission = (0.27 / 100) * totalAmount;
         }
-        let totalPayableAmount = shareAmount + seebonFee + dpFee + brokerCommissionb;
+        let totalPayableAmount = 0;
+        if (parseInt(document.getElementById("shareType").value) == 0) {
+            totalPayableAmount = shareAmount + seebonFee + dpFee + brokerCommissionb;
+        } else {
+            totalPayableAmount = shareAmount;
+        }
         let totalCommission = seebonFee + dpFee + brokerCommission;
         let cgt = (sellingPrice - buyingPrice) * (capitalTaxGain / 100) * noOfShares;
         let cgta = 0;
@@ -86,6 +92,7 @@ calculateSell.addEventListener("click", function() {
         }
         let totalRecievingAmount = totalAmount - cgta - totalCommission;
         profitOrLoss = totalRecievingAmount - totalPayableAmount;
+
         // Adding table contents
         addElement2('it', 'it-v', 'Investor Type', shareAmount);
         addElement2('ta', 'ta-v', 'Total Amount', totalAmount);

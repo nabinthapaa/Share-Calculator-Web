@@ -1,15 +1,18 @@
 let value = document.getElementById('value');
 let amount = document.getElementById('amount');
-let clear = document.getElementById('clear')
-let calculate = document.getElementById('calculate')
-let error = document.getElementById('error')
-let table = document.getElementById('table')
+let clear = document.getElementById('clear');
+let calculate = document.getElementById('calculate');
+let error = document.getElementById('error');
+let table = document.getElementById('table');
+document.getElementById("shareType").value = 0;
+console.log(table.value)
+
 
 clear.addEventListener("click", function() {
     value.value = "";
     amount.value = "";
     error.innerHTML = "";
-    table.innerHTML = "";
+    removeElement();
 })
 
 calculate.addEventListener("click", function() {
@@ -19,6 +22,8 @@ calculate.addEventListener("click", function() {
         let buyingPrice = parseFloat(amount.value);
         let noOfShares = parseFloat(value.value);
 
+
+        let totalPayableAmount = 0;
         let brokerCommission = 0;
         let brokerCommissionRate = 0;
 
@@ -29,7 +34,7 @@ calculate.addEventListener("click", function() {
         if (shareAmount <= 50000) {
             brokerCommissionRate = '0.40%';
             brokerCommission = (0.4 / 100) * shareAmount;
-            if(brokerCommission <= 10){
+            if (brokerCommission <= 10) {
                 brokerCommission = 10;
             }
         } else if (shareAmount > 50000 && shareAmount <= 500000) {
@@ -45,17 +50,29 @@ calculate.addEventListener("click", function() {
             brokerCommissionRate = '0.27%';
             brokerCommission = (0.27 / 100) * shareAmount;
         }
-        let totalPayableAmount = shareAmount + seebonFee + dpFee + brokerCommission;
-        let costPerShare = totalPayableAmount / noOfShares;
-        // Adding table contents
-        addElement('sa', 'sa-v', 'Share Amount', shareAmount);
-        addElement('seebon', 'seebon-v', 'SEEBON Fee', seebonFee);
-        addElement('dp', 'dp-v', 'DP Fee', dpFee);
-        addElement('bc', 'bc-v', 'Broker Commission', brokerCommission);
-        addElement('tpa', 'tpa-v', 'Total Paying Amount', totalPayableAmount);
-        addElement('cps', 'cps-v', 'Cost per Share', costPerShare);
-        if (document.getElementById('bc') != null) {
-            document.getElementById('bc').innerHTML = "Broker Commission(" + brokerCommissionRate + ")";
+        let sharetype = parseInt(document.getElementById("shareType").value);
+        if (sharetype == 1) {
+            removeElement();
+            totalPayableAmount = shareAmount;
+            let costPerShare = totalPayableAmount / noOfShares;
+            addElement('sa', 'sa-v', 'Share Amount', shareAmount);
+            addElement('tpa', 'tpa-v', 'Total Paying Amount', totalPayableAmount);
+            addElement('cps', 'cps-v', 'Cost per Share', costPerShare);
+
+
+        } else {
+            removeElement();
+            totalPayableAmount = shareAmount + seebonFee + dpFee + brokerCommission;
+            let costPerShare = totalPayableAmount / noOfShares;
+            addElement('sa', 'sa-v', 'Share Amount', shareAmount);
+            addElement('seebon', 'seebon-v', 'SEEBON Fee', seebonFee);
+            addElement('dp', 'dp-v', 'DP Fee', dpFee);
+            addElement('bc', 'bc-v', 'Broker Commission', brokerCommission);
+            addElement('tpa', 'tpa-v', 'Total Paying Amount', totalPayableAmount);
+            addElement('cps', 'cps-v', 'Cost per Share', costPerShare);
+            if (document.getElementById('bc') != null) {
+                document.getElementById('bc').innerHTML = "Broker Commission(" + brokerCommissionRate + ")";
+            }
         }
         error.innerHTML = "";
     }
@@ -87,4 +104,9 @@ function addElement(id1, id2, name, value) {
     } else {
         document.getElementById(id2).innerHTML = "Rs. " + NumberFormatter(value, 2);
     }
+}
+
+function removeElement() {
+    $("#table").find("tr").remove();
+
 }
