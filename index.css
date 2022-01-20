@@ -249,6 +249,7 @@ option {
         align-content: center;
         flex-wrap: wrap;
     }
+    .amountContainer,
     .valueContainer {
         flex-direction: row;
         flex-wrap: nowrap;
