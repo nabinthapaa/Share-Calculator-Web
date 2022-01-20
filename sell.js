@@ -47,6 +47,9 @@ calculateSell.addEventListener("click", function() {
         if (shareAmount <= 50000) {
             brokerCommissionRateb = '0.40%';
             brokerCommissionb = (0.4 / 100) * shareAmount;
+            if(brokerCommission <= 10){
+                brokerCommission = 10;
+            }
         } else if (shareAmount > 50000 && shareAmount <= 500000) {
             brokerCommissionRateb = '0.37%';
             brokerCommissionb = (0.37 / 100) * shareAmount;
