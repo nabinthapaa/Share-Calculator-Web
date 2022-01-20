@@ -61,6 +61,7 @@ calculateSell.addEventListener("click", function() {
             brokerCommission = (0.4 / 100) * totalAmount;
             if(brokerCommission <= 10){
                 brokerCommission = 10;
+                console.log(brokerCommission);
             }
         } else if (totalAmount > 50000 && totalAmount <= 500000) {
             brokerCommissionRate = '0.37%';
