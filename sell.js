@@ -45,25 +45,23 @@ calculateSell.addEventListener("click", function() {
         let seebonFeeb = (0.015 / 100) * shareAmount;
 
         if (shareAmount <= 50000) {
-            brokerCommissionRateb = '0.40%';
             brokerCommissionb = (0.4 / 100) * shareAmount;
         } else if (shareAmount > 50000 && shareAmount <= 500000) {
-            brokerCommissionRateb = '0.37%';
             brokerCommissionb = (0.37 / 100) * shareAmount;
         } else if (shareAmount > 500000 && shareAmount <= 2000000) {
-            brokerCommissionRateb = '0.34%';
             brokerCommissionb = (0.34 / 100) * shareAmount;
         } else if (shareAmount > 2000000 && shareAmount <= 10000000) {
-            brokerCommissionRateb = '0.30%';
             brokerCommissionb = (0.30 / 100) * shareAmount;
         } else {
-            brokerCommissionRateb = '0.27%';
             brokerCommissionb = (0.27 / 100) * shareAmount;
         }
 
         if (totalAmount <= 50000) {
             brokerCommissionRate = '0.40%';
             brokerCommission = (0.4 / 100) * totalAmount;
+            if(brokerCommission <= 10){
+                brokerCommission = 10;
+            }
         } else if (totalAmount > 50000 && totalAmount <= 500000) {
             brokerCommissionRate = '0.37%';
             brokerCommission = (0.37 / 100) * totalAmount;

@@ -192,3 +192,32 @@ tr:nth-child(odd) {
     margin: 120px;
     margin-top: 109px;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+  .bodyContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: auto;
+}
+.button2 {
+    width: 120px;
+}
+
+.button1 {
+    width: 140px;
+}
+    #error {
+    text-align: center;
+    color: red;
+    font-family: 'Rubik';
+    padding-left: 15px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+
+}
